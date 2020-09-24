@@ -1,0 +1,84 @@
+body {
+	height: 6000px;
+	width: 4476px;
+}
+
+#map_container {
+	padding-top: 153px;
+	padding-left: 149px;
+	padding-right: 165px;
+	padding-bottom: 150px;
+}
+
+$amount: 72;
+
+.hex-grid__list {
+    --amount: 72;
+    --counter: 1;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(var(--amount), 1fr 2fr) 1fr;
+	grid-gap: 0 0;
+}
+
+.hex-grid__item {
+  position: relative;
+  grid-column: 1/span 3;
+  grid-row: calc(var(--counter) + var(--counter))/span 2;
+  filter: drop-shadow(0 0 10px rgba(68, 68, 68, 0.08));
+  padding-bottom: 87%;
+
+    // Columns
+    @for $i from 1 through $amount {
+        &:nth-of-type(#{$amount}n + #{$i}) {
+            grid-column: #{$i + $i - 1} / span 3;
+            @if $i % 2 == 0 {
+                grid-row: calc(var(--counter) + var(--counter) - 1) / span 2;
+            }
+        }
+    }
+
+    // Rows
+    @for $i from 1 through 85 {
+        &:nth-of-type(n + #{$i * $amount + 1}) {
+            --counter: #{$i + 1};
+        }
+    }
+}
+
+.hex-grid__content {
+  position: absolute;
+  height: 64px;
+  width: 70px;
+  font-size: 1.125rem;
+  color: #111111;
+  background-color: white;
+  clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 25%;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.24s ease-out;
+	
+}
+
+.hex-grid {
+  display: flex;
+  justify-content: center;
+}
+
+
+.hex-grid__content:hover {
+	background-color: rgb(50,107,28);
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+

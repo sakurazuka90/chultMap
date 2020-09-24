@@ -9,4 +9,6 @@ and css hex tutorial from this page
 
 https://ninjarockstar.dev/css-hex-grids/
 
-Please don't use for profit. Especially please don't use any of this code for pay-to-play D&D sessions. 
+Please don't use for profit. Especially please don't use any of this code for pay-to-play D&D sessions. Let's keep our hobby available to everyone.
+
+Please not that map I am using is not perfect since it actually comes with some undiscovered locations shown on the map. For high resolution player map file please consider purchasing it from the author at https://prints.mikeschley.com/p1010232766

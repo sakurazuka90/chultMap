@@ -8,10 +8,25 @@
     <ul id="hexlist" class="hex-grid__list">
     </ul>
 	</div>
-	<div>
-		<button onclick="resetToToAStartState()">Reset to ToA default</button>
-		<button onclick="downloadStateFile()">Export current state</button>
-		<input type="file" id="upload">
+	<div class="toolbar">
+	 <table>
+	  <tr>
+		<td></td>
+		<td></td>
+		<td><label for="upload">Load state from file</label></td>
+		<td><label for="hideToggle">Hide fields mode</label></td>
+	  </tr>
+	  <tr>
+	  	<td><button onclick="resetToToAStartState()" class="font17">Reset to ToA default</button></td>
+		<td><button onclick="downloadStateFile()" class="font17">Export current state</button></td>
+		<td><input type="file" id="upload" class="font17"></td>
+		<td><input type="checkbox" id="hideToggle" name="hideToggle"></td>
+	  </tr>
+		
+		
+		
+		
+        
 	</div>
 </body>
 </html>

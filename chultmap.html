@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="gridstyle.css">
+		<script src="chultmap.js"></script>		
+	</head>
+<body style="background-image: url('chultmap.jpg')" onload="init()">
+	<div id="map_container">
+    <ul id="hexlist" class="hex-grid__list">
+    </ul>
+	</div>
+	<div>
+		<button onclick="resetToToAStartState()">Reset to ToA default</button>
+		<button onclick="getVisibleCells()">Export current state</button>
+		
+	</div>
+</body>
+</html>

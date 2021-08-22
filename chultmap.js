@@ -18,8 +18,9 @@ function init(){
 	
 	node.appendChild(divnode);
 	list.appendChild(node);
-	
 	}
+	
+	resetToToAStartState();
 }
 
 function getVisibleCells(){

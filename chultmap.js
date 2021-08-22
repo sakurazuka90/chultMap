@@ -2,25 +2,28 @@ function init(){
 	var list = document.getElementById("hexlist");
 	
 	for(var i = 0; i < 6120; i++){
-	
-	var node = document.createElement("LI"); 
-	node.className = "hex-grid__item";	
-	
-	
-	var divnode = document.createElement("DIV");
-	divnode.className = "hex-grid__content";
-	var iterator = i;
-	divnode.addEventListener('click', function(e) {
-		console.log(e.target);
-		e.target.style.visibility = "hidden";
-	}
-	);
-	
-	node.appendChild(divnode);
-	list.appendChild(node);
+		
+		var node = document.createElement("LI"); 
+		node.className = "hex-grid__item";	
+		
+		
+		var divnode = document.createElement("DIV");
+		divnode.className = "hex-grid__content";
+		var iterator = i;
+		divnode.addEventListener('click', 
+			function(e) {
+				console.log(e.target);
+				e.target.style.visibility = "hidden";
+			}
+		);
+		
+		node.appendChild(divnode);
+		list.appendChild(node);
 	}
 	
 	resetToToAStartState();
+	
+	document.getElementById('upload').addEventListener('change', readFileAsString)
 }
 
 function getVisibleCells(){
@@ -42,10 +45,10 @@ function getVisibleCells(){
 			
 			if(i == liElements.length-1){
 				if(sectionStart == sectionEnd || sectionEnd === null) {
-				visibleCellsString += sectionStart;
-			} else {
-				visibleCellsString += (sectionStart + "-" + sectionEnd);
-			}
+					visibleCellsString += sectionStart;
+				} else {
+					visibleCellsString += (sectionStart + "-" + sectionEnd);
+				}
 			}
 		} else if(sectionStart != null) {
 			if(sectionStart == sectionEnd || sectionEnd === null) {
@@ -66,6 +69,13 @@ function getVisibleCells(){
 	}
 	
 	console.log(visibleCellsString);
+	
+	var mapfile = new Blob([visibleCellsString], {type: 'text/plain'});
+	
+	var downloadLink = document.createElement('a');
+	downloadLink.download = 'chultMapSavefile.txt';
+	downloadLink.href = window.URL.createObjectURL(mapfile);
+	downloadLink.click();
 }
 
 
@@ -86,6 +96,22 @@ function makeCellsVisible(cellString){
 			liElements[ids[i]].firstElementChild.style.visibility = "hidden";
 		}
 	}
+}
+
+function readFileAsString() {
+    var files = this.files;
+    if (files.length === 0) {
+        console.log('No file is selected');
+        return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        console.log('File content:', event.target.result);
+		makeCellsVisible(event.target.result)
+		
+    };
+    reader.readAsText(files[0]);
 }
 
 function resetToToAStartState(){
